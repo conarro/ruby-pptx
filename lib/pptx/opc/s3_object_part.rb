@@ -8,7 +8,7 @@ module PPTX
       end
 
       def marshal
-        @object.read
+        @object.get.body.read
       end
 
       def size
@@ -16,7 +16,7 @@ module PPTX
       end
 
       def stream(out)
-        @object.read do |chunk|
+        @object.get.body.read do |chunk|
           out << chunk
         end
       end
