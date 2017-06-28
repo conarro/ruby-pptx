@@ -10,7 +10,7 @@ module PPTX
 
     def base_xml
       '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-        <p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+         <p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
                xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"
                xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
             <p:cSld>
@@ -41,11 +41,11 @@ module PPTX
       shape_tree_xml.add_child(shape.build_node)
     end
 
-    def add_picture(transform, name, image)
+    def add_picture(transform, name, image, formatting={})
       # TODO do something with name or remove
       rid = relationships.add(relative_part_name(image.part_name), PPTX::RELTYPE_IMAGE)
 
-      shape = Shapes::Picture.new(transform, rid)
+      shape = Shapes::Picture.new(transform, rid, formatting)
       shape_tree_xml.add_child(shape.build_node)
     end
 
