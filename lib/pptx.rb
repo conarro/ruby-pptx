@@ -17,6 +17,7 @@ module PPTX
     'http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout'
   CM = 360000  # 1 centimeter in OpenXML EMUs
   POINT = 100  # font size point
+  PT = 12700   # pt in OpenXML EMUs
 
   def self.cm(*values)
     values.map { |v| v * CM }

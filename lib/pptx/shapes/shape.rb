@@ -41,6 +41,20 @@ module PPTX
           node.xpath('.//a:srgbClr', a: DRAWING_NS).first['val'] = rgb_color
         end
       end
+
+      def build_border(rgb_color, width)
+        border_xml = """
+            <a:ln w='#{width * PPTX::PT}'>
+              <a:solidFill xmlns:a='http://schemas.openxmlformats.org/drawingml/2006/main'>
+                <a:srgbClr val='SETME'/>
+              </a:solidFill>
+            </a:ln>
+        """
+
+        Nokogiri::XML::DocumentFragment.parse(border_xml).tap do |node|
+          node.xpath('.//a:srgbClr', a: DRAWING_NS).first['val'] = rgb_color
+        end
+      end
     end
   end
 end
